@@ -1,7 +1,7 @@
 /* global window */
 import axios from 'axios'
 import qs from 'qs'
-import jsonp from 'jsonp'
+// import jsonp from 'jsonp'
 import lodash from 'lodash'
 import pathToRegexp from 'path-to-regexp'
 import { message } from 'antd'
@@ -35,23 +35,23 @@ const fetch = (options) => {
     message.error(e.message)
   }
 
-  if (fetchType === 'JSONP') {
-    return new Promise((resolve, reject) => {
-      jsonp(url, {
-        param: `${qs.stringify(data)}&callback`,
-        name: `jsonp_${new Date().getTime()}`,
-        timeout: 4000,
-      }, (error, result) => {
-        if (error) {
-          reject(error)
-        }
-        resolve({ statusText: 'OK', status: 200, data: result })
-      })
-    })
-  } else if (fetchType === 'YQL') {
-    url = `http://query.yahooapis.com/v1/public/yql?q=select * from json where url='${options.url}?${encodeURIComponent(qs.stringify(options.data))}'&format=json`
-    data = null
-  }
+  // if (fetchType === 'JSONP') {
+  //   return new Promise((resolve, reject) => {
+  //     jsonp(url, {
+  //       param: `${qs.stringify(data)}&callback`,
+  //       name: `jsonp_${new Date().getTime()}`,
+  //       timeout: 4000,
+  //     }, (error, result) => {
+  //       if (error) {
+  //         reject(error)
+  //       }
+  //       resolve({ statusText: 'OK', status: 200, data: result })
+  //     })
+  //   })
+  // } else if (fetchType === 'YQL') {
+  //   url = `http://query.yahooapis.com/v1/public/yql?q=select * from json where url='${options.url}?${encodeURIComponent(qs.stringify(options.data))}'&format=json`
+  //   data = null
+  // }
 
   switch (method.toLowerCase()) {
     case 'get':

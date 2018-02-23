@@ -14,42 +14,43 @@ import Error from './error';
 
 const { prefix, openPages } = config;
 
-const { Header, Bread, Footer, Sider, styles } = Layout;
+const { Header } = Layout;
 let lastHref;
 const App = ({ children, dispatch, app, loading, location }) => {
-    const { user,siderFold,darkTheme,isNavVar,}
+    console.log(arguments)
+    // const { user,siderFold,darkTheme,isNavVar,}
+    const { iconFontJS, iconFontCSS, logo } = config
 
-
-    if (lastHref !== href) {
-        NProgress.start()
-        if (!loading.global) {
-            NProgress.done()
-            lastHref = href
-        }
-    }
+    // if (lastHref !== href) {
+    //     NProgress.start()
+    //     if (!loading.global) {
+    //         NProgress.done()
+    //         lastHref = href
+    //     }
+    // }
 
     const headerProps = {
-        menu,
+        // menu,
         switchMenuPopover() {
             dispatch({ type: 'app/switchMenuPopver' })
         }
     }
 
-    const siderProps = {
-        menu
-    }
+    // const siderProps = {
+    //     menu
+    // }
 
-    if (openPages && openPages.includes(pathname)) {
-        return (
-            <div>
-                <Loader fullScreen spinning={loading.effects['app/query']} />
-                {children}
-            </div>
-        )
-    }
+    // if (openPages && openPages.includes(pathname)) {
+    //     return (
+    //         <div>
+    //             <Loader fullScreen spinning={loading.effects['app/query']} />
+    //             {children}
+    //         </div>
+    //     )
+    // }
     return (
         <div>
-            <Loader fullScreen spinning={loading.effects['app/query']} />
+            {/* <Loader fullScreen spinning={loading.effects['app/query']} /> */}
             <Helmet>
                 <title>设享云</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,7 +58,7 @@ const App = ({ children, dispatch, app, loading, location }) => {
                 {iconFontJS && <script src={iconFontJS} />}
                 {iconFontCSS && <link rel="stylesheet" href={iconFontCSS} />}
             </Helmet>
-
+            <Header {...headerProps} />
         </div>
     )
 }

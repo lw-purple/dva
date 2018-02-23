@@ -6,7 +6,7 @@ import App from 'routes/app';
 
 const { ConnectedRouter } = routerRedux;
 
-const Routes = function({history,app}){
+const Routers = function({history,app}){
   const error = dynamic({
     app,
     component:()=>import('./routes/error'),
@@ -15,7 +15,7 @@ const Routes = function({history,app}){
   const routes =[
     {
       path: '/dashboard',
-      models: () => [import('./models/dashboard')],
+      // models: () => [import('./models/dashboard')],
       component: () => import('./routes/dashboard/'),
     }
   ]
