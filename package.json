@@ -2,7 +2,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "start": "set PORT=3000&& roadhog buildDll && cross-env BROWSER=none HOST=0.0.0.0 roadhog server",
+    "start": "set PORT=3000&& roadhog buildDll && cross-env BROWSER=none HOST=localhost roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint"
@@ -16,6 +16,7 @@
     "babel-runtime": "^6.9.2",
     "dva": "^2.1.0",
     "dva-loading": "^1.0.4",
+    "mockjs": "^1.0.1-beta3",
     "react": "^15.4.0",
     "react-dom": "^15.4.0"
   },
@@ -34,8 +35,10 @@
     "expect": "^1.20.2",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.12.0",
+    "jsonp": "^0.2.1",
     "less-vars-to-js": "^1.2.1",
     "nprogress": "^0.2.0",
+    "open-browser-webpack-plugin": "0.0.5",
     "react-countup": "^3.0.2",
     "react-helmet": "^5.2.0",
     "redbox-react": "^1.4.3",

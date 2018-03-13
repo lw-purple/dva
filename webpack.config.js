@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
-
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = (webpackConfig, env) => {
   const production = env === 'production'
   // FilenameHash
@@ -41,6 +41,7 @@ module.exports = (webpackConfig, env) => {
       hash: true,
       headScripts: production ? null : ['/roadhog.dll.js'],
     }),
+    new OpenBrowserPlugin({ url: 'http://localhost:3000' })
   ])
 
   // Alias
